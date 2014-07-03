@@ -1,6 +1,6 @@
 Snap.plugin(function(Snap, Element, Paper, global, Fragment) {
 
-	eve.on("snap.util.attr.font-family", function(value){
+	var addFontFamily = function(value){
 		if (value !== null && typeof value === 'object')
 		{
 			if (value.src === undefined || value.fontFamily === undefined || this.type !== 'text')
@@ -44,7 +44,10 @@ Snap.plugin(function(Snap, Element, Paper, global, Fragment) {
 				el.attr('font-family', value.fontFamily);
 			}
 		}
-	});
+	};
+
+	eve.on("snap.util.attr.font-family", addFontFamily);
+	eve.on("snap.util.attr.fontFamily", addFontFamily);
 
 	var already_loaded = function(paper, font)
 	{
